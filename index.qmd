@@ -1,0 +1,11 @@
+---
+title: "This is my documentation."
+date: "`r Sys.Date()`"
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+
+This is where my journey on writting my knowledge starts.

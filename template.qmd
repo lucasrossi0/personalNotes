@@ -1,0 +1,11 @@
+---
+title: "Title"
+date: "`r Sys.Date()`"
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+# Section 1
+Text...

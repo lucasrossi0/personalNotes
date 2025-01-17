@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "thirdfile.html",
+    "href": "thirdfile.html",
+    "title": "Third file",
+    "section": "",
+    "text": "Third file\nThird file content."
+  },
+  {
+    "objectID": "newfile.html",
+    "href": "newfile.html",
+    "title": "First file",
+    "section": "",
+    "text": "First content\nThis is the first content of the first file."
+  },
+  {
+    "objectID": "template.html",
+    "href": "template.html",
+    "title": "Title",
+    "section": "",
+    "text": "Section 1\nText…"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "This is my documentation.",
+    "section": "",
+    "text": "This is where my journey on writting my knowledge starts."
+  },
+  {
+    "objectID": "secondfile.html",
+    "href": "secondfile.html",
+    "title": "Second file",
+    "section": "",
+    "text": "Second file\nSecond file content."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]

@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "Lucas documentation."
+  navbar:
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Topics"
+        menu:
+          - text: "First file"
+            href: newfile.qmd
+          - text: "Second file"
+            href: secondfile.qmd
+          - text: "Third file"
+            href: thirdfile.qmd
+      - text: "About"
+        href: about.qmd
+
+format:
+  html:
+    theme: superhero
+    toc: true
+    toc-depth: 2
+    code-fold: true
+
+editor:
+  default-view: source
+

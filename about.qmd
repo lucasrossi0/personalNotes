@@ -1,0 +1,11 @@
+---
+title: "About"
+date: "`r Sys.Date()`"
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+
+About this site

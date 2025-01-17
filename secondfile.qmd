@@ -1,0 +1,11 @@
+---
+title: "Second file"
+date: "`r Sys.Date()`"
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+# Second file
+Second file content.
