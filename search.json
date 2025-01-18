@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "newfile.html",
+    "href": "newfile.html",
+    "title": "First file",
+    "section": "",
+    "text": "First content\nThis is the first content of the first file."
+  },
+  {
+    "objectID": "template.html",
+    "href": "template.html",
+    "title": "Title",
+    "section": "",
+    "text": "Section 1\nText…"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "This is my documentation.",
+    "section": "",
+    "text": "This is where my journey on writting my knowledge starts."
+  },
+  {
+    "objectID": "secondfile.html",
+    "href": "secondfile.html",
+    "title": "Second file",
+    "section": "",
+    "text": "Second file\nSecond file content."
+  },
+  {
+    "objectID": "java-concepts/java-concepts-stream.html",
+    "href": "java-concepts/java-concepts-stream.html",
+    "title": "Java Concepts - Stream",
+    "section": "",
+    "text": "Basics of stream\n\nStream is an interface, which can process elements inside a data structure in a way more functional.   But more functional? How? - Being able to read and understand better; - Writes less lines of code; - Combine mutiple operations in a single chain.   Speaking on a more technichal manner, we can use operations like filter(), map(), collect(), to obtain the same result as a for each loop with conditionals inside it. Example: \n// Not using stream. Using while loop.\npublic int totalWeight() {\n    int summa = 0;\n    int indeksi = 0;\n    while (indeksi &lt; this.Items.size()) {\n        summa += this.Items.get(indeksi).getWeight();\n        indeksi++;\n    }\n    return summa;\n}\n    \n// Using stream -&gt; mapToInt is to return the a stream of int with \n// all the weight of the obj inside the Items, and return the sum() of all.\npublic int totalWeight(){\n    return Items.stream().mapToInt(obj -&gt; obj.getWeight()).sum();\n}"
+  }
+]
