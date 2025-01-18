@@ -1,0 +1,41 @@
+---
+title: "Java Concepts - Stream"
+date: 2025-1-18
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+# Basics of stream
+---
+Stream is an interface, which can process elements inside a data structure in a way more functional. 
+<br>
+<br>
+But more functional? How?<br>
+ - Being able to read and understand better;<br> 
+ - Writes less lines of code;<br>
+ - Combine mutiple operations in a single chain.
+<br>
+<br>
+Speaking on a more technichal manner, we can use operations like filter(), map(), collect(), to obtain the same result as a for each loop with conditionals inside it.
+Example:
+<br>
+```java
+// Not using stream. Using while loop.
+public int totalWeight() {
+    int summa = 0;
+    int indeksi = 0;
+    while (indeksi < this.Items.size()) {
+        summa += this.Items.get(indeksi).getWeight();
+        indeksi++;
+    }
+    return summa;
+}
+    
+// Using stream -> mapToInt is to return the a stream of int with 
+// all the weight of the obj inside the Items, and return the sum() of all.
+public int totalWeight(){
+    return Items.stream().mapToInt(obj -> obj.getWeight()).sum();
+}
+```
