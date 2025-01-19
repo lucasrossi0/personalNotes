@@ -13,4 +13,87 @@ In software development testing is important for a lot of reasons, a few of them
 <br>
 - Verifying the functionality of the application, or a specific method or function;<br>
 - Detecting bugs or errors, its better and cheaper to find them in development rather than production;<br>
+- Improve code quality, ensuring that the output of the application is what its expected to be.<br>
 - HAVE TO TALK ABOUT WHY WE NEED TEST, HOW WE TEST AND EXAMPLES OF TOOLS TO DO IT IN JAVA
+<br>
+<br>
+---
+# How we test?
+---
+There are plenty of tools to test, in Java we will talk about (JUnit)[https://junit.org/junit5/] and (Mockito)[https://site.mockito.org/].
+<br>
+Here is a code snippet of JUnit and Mockito:
+```java
+package dev.pronunciationAppBack;
+
+import dev.pronunciationAppBack.model.Word;
+import dev.pronunciationAppBack.repository.WordRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@DataJpaTest
+public class PronunciationAppBackApplicationTests {
+
+	@Autowired
+	private TestEntityManager entityManager;
+
+	@Autowired
+	private WordRepository wordRepository;
+
+	@Test
+	public void testCreateWord() {
+		Word word = new Word("1", "Example", "A thing characteristic of its kind", "ɪɡˈzæmpəl", "This is an example sentence.", true, 1);
+		// assign the word object to the repository and save to H2
+		Word savedWord = wordRepository.save(word);
+		assertThat(savedWord).isNotNull();
+		assertThat(savedWord.getId()).isEqualTo("1");
+	}
+}
+
+// Mockito:
+
+package dev.pronunciationAppBack;
+
+import dev.pronunciationAppBack.model.Word;
+import dev.pronunciationAppBack.repository.WordRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+public class PronunciationAppBackApplicationTests {
+
+    @Mock
+    private WordRepository wordRepository;
+
+    private Word testWord;
+
+    @BeforeEach
+    void setUp() {
+        testWord = new Word("1", "Example", "A thing characteristic of its kind", 
+            "ɪɡˈzæmpəl", "This is an example sentence.", true, 1);
+    }
+
+    @Test
+    public void testCreateWord() {
+        when(wordRepository.save(any(Word.class))).thenReturn(testWord);
+
+        Word savedWord = wordRepository.save(testWord);
+
+        assertThat(savedWord).isNotNull();
+        assertThat(savedWord.getId()).isEqualTo("1");
+        verify(wordRepository, times(1)).save(any(Word.class));
+    }
+}
+```

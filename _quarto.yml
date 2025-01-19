@@ -10,10 +10,12 @@ website:
         href: index.qmd
       - text: "Java"
         menu:
-          - text: "Java Stream"
+          - text: "Stream"
             href: ./java-concepts/java-concepts-stream.qmd
-          - text: "Java Optional"
+          - text: "Optional"
             href: ./java-concepts/java-concepts-optional.qmd
+          - text: "Testing"
+            href: ./java-concepts/java-concepts-test.qmd
       - text: "About"
         href: about.qmd
 
@@ -26,4 +28,3 @@ format:
 
 editor:
   default-view: source
-
