@@ -16,5 +16,11 @@
   },
   "thirdfile.qmd": {
     "thirdfile.html": "542e2131"
+  },
+  "java-concepts/java-concepts-stream.qmd": {
+    "java-concepts-stream.html": "d4aa921a"
+  },
+  "java-concepts/java-concepts-optional.qmd": {
+    "java-concepts-optional.html": "bc8deff8"
   }
 }

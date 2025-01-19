@@ -1,0 +1,27 @@
+---
+title: "Java Concepts - Optional"
+date: 2025-1-19
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+# What is optional?
+---
+Optional is a Java Class, created to handle a value that can or cannot be present. In other words, if the value is assigned to something or is empty or null.
+<br>
+For example, if an object being returned is empty, the application will stop with an NullPointerException. When implemented, the Option class will prevent that error and return an explicty call to empty.
+<br>
+<br>
+Heres a code snippet:
+```java
+    @GetMapping("/{id}")
+    public ResponseEntity<Word> getWordById(@PathVariable String id){
+        // Creating the word object using optional to avoid the NullPointerException
+        Optional<Word> word = wordService.getWordById(id);
+        // Mapping the potential return case if the word is found or not
+        return word.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+        .orElseGet(() -> new ResponseEntity>(HttpStatus.NOT_FOUND));
+    }
+```

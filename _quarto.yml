@@ -8,14 +8,12 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Topics"
+      - text: "Java"
         menu:
-          - text: "First file"
-            href: newfile.qmd
-          - text: "Second file"
-            href: secondfile.qmd
-          - text: "Third file"
-            href: thirdfile.qmd
+          - text: "Java Stream"
+            href: ./java-concepts/java-concepts-stream.qmd
+          - text: "Java Optional"
+            href: ./java-concepts/java-concepts-optional.qmd
       - text: "About"
         href: about.qmd
 

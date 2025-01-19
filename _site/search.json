@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "thirdfile.html",
-    "href": "thirdfile.html",
-    "title": "Third file",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Third file\nThird file content."
+    "text": "About this site"
   },
   {
     "objectID": "newfile.html",
@@ -35,10 +35,17 @@
     "text": "Second file\nSecond file content."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "java-concepts/java-concepts-stream.html",
+    "href": "java-concepts/java-concepts-stream.html",
+    "title": "Java Concepts - Stream",
     "section": "",
-    "text": "About this site"
+    "text": "Basics of stream\n\nStream is an interface, which can process elements inside a data structure in a way more functional.   But more functional? How? - Being able to read and understand better; - Writes less lines of code; - Combine mutiple operations in a single chain.   Speaking on a more technichal manner, we can use operations like filter(), map(), collect(), to obtain the same result as a for each loop with conditionals inside it. Example: \n// Not using stream. Using while loop.\npublic int totalWeight() {\n    int summa = 0;\n    int indeksi = 0;\n    while (indeksi &lt; this.Items.size()) {\n        summa += this.Items.get(indeksi).getWeight();\n        indeksi++;\n    }\n    return summa;\n}\n    \n// Using stream -&gt; mapToInt is to return the a stream of int with \n// all the weight of the obj inside the Items, and return the sum() of all.\npublic int totalWeight(){\n    return Items.stream().mapToInt(obj -&gt; obj.getWeight()).sum();\n}"
+  },
+  {
+    "objectID": "java-concepts/java-concepts-optional.html",
+    "href": "java-concepts/java-concepts-optional.html",
+    "title": "Java Concepts - Optional",
+    "section": "",
+    "text": "What is optional?\nOptional is a Java Class, created to handle a value that can or cannot be present. In other words, if the value is assigned to something or is empty or null.  For example, if an object being returned is empty, the application will stop with an NullPointerException. When implemented, the Option class will prevent that error and return an explicty call to empty.   Heres a code snippet:\n    @GetMapping(\"/{id}\")\n    public ResponseEntity&lt;Word&gt; getWordById(@PathVariable String id){\n        // Creating the word object using optional to avoid the NullPointerException\n        Optional&lt;Word&gt; word = wordService.getWordById(id);\n        // Mapping the potential return case if the word is found or not\n        return word.map(value -&gt; new ResponseEntity&lt;&gt;(value, HttpStatus.OK))\n        .orElseGet(() -&gt; new ResponseEntity&gt;(HttpStatus.NOT_FOUND));\n    }"
   }
 ]

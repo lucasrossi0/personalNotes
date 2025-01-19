@@ -1,0 +1,16 @@
+---
+title: "Java Concepts - Test"
+date: 2025-1-19
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+# Why we need to test?
+---
+In software development testing is important for a lot of reasons, a few of them being:
+<br>
+- Verifying the functionality of the application, or a specific method or function;<br>
+- Detecting bugs or errors, its better and cheaper to find them in development rather than production;<br>
+- HAVE TO TALK ABOUT WHY WE NEED TEST, HOW WE TEST AND EXAMPLES OF TOOLS TO DO IT IN JAVA
