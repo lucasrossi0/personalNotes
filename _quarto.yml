@@ -1,30 +1,29 @@
 project:
   type: website
-
 website:
-  title: "Lucas documentation."
+  title: Lucas documentation.
   navbar:
     search: true
     left:
-      - text: "Home"
+      - text: Home
         href: index.qmd
-      - text: "Java"
+      - text: Java
         menu:
-          - text: "Stream"
+          - text: Stream
             href: ./java-concepts/java-concepts-stream.qmd
-          - text: "Optional"
+          - text: Optional
             href: ./java-concepts/java-concepts-optional.qmd
-          - text: "Testing"
+          - text: Testing
             href: ./java-concepts/java-concepts-test.qmd
-      - text: "About"
-        href: about.qmd
-
+      - text: Programming
+        menu:
+          - text: Dependency Injection
+            href: ./programming-concepts/dependecy-injection.qmd
 format:
   html:
     theme: superhero
     toc: true
     toc-depth: 2
     code-fold: true
-
 editor:
   default-view: source

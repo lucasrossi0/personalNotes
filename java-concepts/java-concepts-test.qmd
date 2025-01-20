@@ -1,23 +1,21 @@
 ---
-title: "Java Concepts - Test"
+title: Java Concepts - Test
 date: 2025-1-19
 format:
-    html:
-        toc: true
-        toc-depth: 3
-        code-fold: true
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
 ---
 # Why we need to test?
 ---
 In software development testing is important for a lot of reasons, a few of them being:
 <br>
-- Verifying the functionality of the application, or a specific method or function;<br>
-- Detecting bugs or errors, its better and cheaper to find them in development rather than production;<br>
-- Improve code quality, ensuring that the output of the application is what its expected to be.<br>
-- HAVE TO TALK ABOUT WHY WE NEED TEST, HOW WE TEST AND EXAMPLES OF TOOLS TO DO IT IN JAVA
 <br>
-<br>
----
+<li>Verifying the functionality of the application, or a specific method or function;</li>
+<li>Detecting bugs or errors, its better and cheaper to find them in development rather than production;</li>
+<li>Improve code quality, ensuring that the output of the application is what its expected to be.</li>
+
 # How we test?
 ---
 There are plenty of tools to test, in Java we will talk about (JUnit)[https://junit.org/junit5/] and (Mockito)[https://site.mockito.org/].

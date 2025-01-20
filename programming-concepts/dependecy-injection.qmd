@@ -1,0 +1,62 @@
+---
+title: "Dependency Injection"
+date: 2025-1-20
+format:
+    html:
+        toc: true
+        toc-depth: 3
+        code-fold: true
+---
+
+# What is Dependecy Injection?
+
+---
+
+In simple words is injecting a object or an element into another class to being able to use its functions and atributes or dependencies.
+<br>
+<br>
+In java is being able to utilize anothers class or interface methods and atributes in another class where you want to utilize it, instead of creating and instanciating a new object, its easier to just inject it. There are three types of dependecy injection Conctructor injection, Setter injection and Method injection. Here its and example in Spring:
+```java
+// Constructor injection:
+@Service
+public class BookService {
+    // Or just the atribute with @Autowired, spring takes care to manage its lifecycle
+    @Autowired
+    private final BookRepository bookRepository;
+    
+    @Autowired
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+}
+
+// Setter injection
+@Service
+public class UserService {
+    private UserRepository userRepository;
+    
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+}
+
+// Method injection
+@Service
+public class OrderService {
+    private OrderRepository orderRepository;
+    private PaymentService paymentService;
+    
+    @Autowired
+    public void init(OrderRepository orderRepository, PaymentService paymentService) {
+        this.orderRepository = orderRepository;
+        this.paymentService = paymentService;
+    }
+}
+```
+
+Words from Albert Profe:
+
+```
+This is often done using frameworks like Spring Boot, where dependencies are defined as beans and injected into other beans using annotations.
+```

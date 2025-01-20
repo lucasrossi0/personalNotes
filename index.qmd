@@ -1,11 +1,12 @@
 ---
-title: "This is my documentation."
-date: "`r Sys.Date()`"
+title: "Home"
+date: 2025-1-17
 format:
     html:
         toc: true
         toc-depth: 3
         code-fold: true
 ---
-
-This is where my journey on writting my knowledge starts.
+# My documentation
+---
+Junior Java developer. Slowly but steady learning more about Spring framework. In a future being a fullstack with react.

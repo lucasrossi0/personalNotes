@@ -22,5 +22,11 @@
   },
   "java-concepts/java-concepts-optional.qmd": {
     "java-concepts-optional.html": "bc8deff8"
+  },
+  "java-concepts/java-concepts-test.qmd": {
+    "java-concepts-test.html": "73f30bf1"
+  },
+  "programming-concepts/dependecy-injection.qmd": {
+    "dependecy-injection.html": "43f6145d"
   }
 }
