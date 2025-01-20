@@ -145,6 +145,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-programming" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Programming</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-programming">    
+        <li>
+    <a class="dropdown-item" href="../programming-concepts/dependecy-injection.html">
+ <span class="dropdown-text">Dependency Injection</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -196,16 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="why-we-need-to-test" class="level1">
 <h1>Why we need to test?</h1>
-In software development testing is important for a lot of reasons, a few of them being: <br> <br>
-<li>
-Verifying the functionality of the application, or a specific method or function;
-</li>
-<li>
-Detecting bugs or errors, its better and cheaper to find them in development rather than production;
-</li>
-<li>
-Improve code quality, ensuring that the output of the application is what its expected to be.
-</li>
+<p>In software development testing is important for a lot of reasons, a few of them being: <br> <br> Verifying the functionality of the application, or a specific method or function;<br> Detecting bugs or errors, its better and cheaper to find them in development rather than production;<br> Improve code quality, ensuring that the output of the application is what its expected to be.<br></p>
 </section>
 <section id="how-we-test" class="level1">
 <h1>How we test?</h1>
@@ -377,7 +379,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/lucasrossi0\.github\.io\/personalNotes\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -55,8 +55,8 @@ public class OrderService {
 }
 ```
 
-Words from Albert Profe:
+## Words from Albert Profe
 
-```
+---
+
 This is often done using frameworks like Spring Boot, where dependencies are defined as beans and injected into other beans using annotations.
-```
