@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-18">
+<meta name="dcterms.date" content="2025-01-19">
 
-<title>Java Concepts - Stream – Lucas documentation.</title>
+<title>Java Concepts - Test – Lucas documentation.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -172,7 +172,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basics-of-stream" id="toc-basics-of-stream" class="nav-link active" data-scroll-target="#basics-of-stream">Basics of stream</a></li>
+  <li><a href="#why-we-need-to-test" id="toc-why-we-need-to-test" class="nav-link active" data-scroll-target="#why-we-need-to-test">Why we need to test?</a></li>
+  <li><a href="#how-we-test" id="toc-how-we-test" class="nav-link" data-scroll-target="#how-we-test">How we test?</a></li>
   </ul>
 </nav>
     </div>
@@ -181,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Java Concepts - Stream</h1>
+<h1 class="title">Java Concepts - Test</h1>
 </div>
 
 
@@ -192,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 18, 2025</p>
+      <p class="date">January 19, 2025</p>
     </div>
   </div>
   
@@ -204,26 +205,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="basics-of-stream" class="level1">
-<h1>Basics of stream</h1>
-<hr>
-<p>Stream is an interface, which can process elements inside a data structure in a way more functional. <br> <br> But more functional? How?<br> - Being able to read and understand better;<br> - Writes less lines of code;<br> - Combine mutiple operations in a single chain. <br> <br> Speaking on a more technichal manner, we can use operations like filter(), map(), collect(), to obtain the same result as a for each loop with conditionals inside it. Example: <br></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Not using stream. Using while loop.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">totalWeight</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> summa <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> indeksi <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>indeksi <span class="op">&lt;</span> <span class="kw">this</span><span class="op">.</span><span class="fu">Items</span><span class="op">.</span><span class="fu">size</span><span class="op">())</span> <span class="op">{</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        summa <span class="op">+=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">Items</span><span class="op">.</span><span class="fu">get</span><span class="op">(</span>indeksi<span class="op">).</span><span class="fu">getWeight</span><span class="op">();</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        indeksi<span class="op">++;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> summa<span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Using stream -&gt; mapToInt is to return the a stream of int with </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">// all the weight of the obj inside the Items, and return the sum() of all.</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">totalWeight</span><span class="op">(){</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Items<span class="op">.</span><span class="fu">stream</span><span class="op">().</span><span class="fu">mapToInt</span><span class="op">(</span>obj <span class="op">-&gt;</span> obj<span class="op">.</span><span class="fu">getWeight</span><span class="op">()).</span><span class="fu">sum</span><span class="op">();</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="why-we-need-to-test" class="level1">
+<h1>Why we need to test?</h1>
+<p>In software development testing is important for a lot of reasons, a few of them being: <br> <br> Verifying the functionality of the application, or a specific method or function;<br> Detecting bugs or errors, its better and cheaper to find them in development rather than production;<br> Improve code quality, ensuring that the output of the application is what its expected to be.<br></p>
+</section>
+<section id="how-we-test" class="level1">
+<h1>How we test?</h1>
+<p>There are plenty of tools to test, in Java we will talk about (JUnit)[https://junit.org/junit5/] and (Mockito)[https://site.mockito.org/]. <br> Here is a code snippet of JUnit and Mockito:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> dev</span><span class="op">.</span><span class="im">pronunciationAppBack</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">dev</span><span class="op">.</span><span class="im">pronunciationAppBack</span><span class="op">.</span><span class="im">model</span><span class="op">.</span><span class="im">Word</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">dev</span><span class="op">.</span><span class="im">pronunciationAppBack</span><span class="op">.</span><span class="im">repository</span><span class="op">.</span><span class="im">WordRepository</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">beans</span><span class="op">.</span><span class="im">factory</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">Autowired</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">boot</span><span class="op">.</span><span class="im">test</span><span class="op">.</span><span class="im">autoconfigure</span><span class="op">.</span><span class="im">orm</span><span class="op">.</span><span class="im">jpa</span><span class="op">.</span><span class="im">DataJpaTest</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">springframework</span><span class="op">.</span><span class="im">boot</span><span class="op">.</span><span class="im">test</span><span class="op">.</span><span class="im">autoconfigure</span><span class="op">.</span><span class="im">orm</span><span class="op">.</span><span class="im">jpa</span><span class="op">.</span><span class="im">TestEntityManager</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">assertj</span><span class="op">.</span><span class="im">core</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.</span><span class="im">assertThat</span><span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">@DataJpaTest</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> PronunciationAppBackApplicationTests <span class="op">{</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Autowired</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> TestEntityManager entityManager<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Autowired</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> WordRepository wordRepository<span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">testCreateWord</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        Word word <span class="op">=</span> <span class="kw">new</span> <span class="fu">Word</span><span class="op">(</span><span class="st">"1"</span><span class="op">,</span> <span class="st">"Example"</span><span class="op">,</span> <span class="st">"A thing characteristic of its kind"</span><span class="op">,</span> <span class="st">"ɪɡˈzæmpəl"</span><span class="op">,</span> <span class="st">"This is an example sentence."</span><span class="op">,</span> <span class="kw">true</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">// assign the word object to the repository and save to H2</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        Word savedWord <span class="op">=</span> wordRepository<span class="op">.</span><span class="fu">save</span><span class="op">(</span>word<span class="op">);</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertThat</span><span class="op">(</span>savedWord<span class="op">).</span><span class="fu">isNotNull</span><span class="op">();</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertThat</span><span class="op">(</span>savedWord<span class="op">.</span><span class="fu">getId</span><span class="op">()).</span><span class="fu">isEqualTo</span><span class="op">(</span><span class="st">"1"</span><span class="op">);</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">// Mockito:</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> dev</span><span class="op">.</span><span class="im">pronunciationAppBack</span><span class="op">;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">dev</span><span class="op">.</span><span class="im">pronunciationAppBack</span><span class="op">.</span><span class="im">model</span><span class="op">.</span><span class="im">Word</span><span class="op">;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">dev</span><span class="op">.</span><span class="im">pronunciationAppBack</span><span class="op">.</span><span class="im">repository</span><span class="op">.</span><span class="im">WordRepository</span><span class="op">;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">BeforeEach</span><span class="op">;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">extension</span><span class="op">.</span><span class="im">ExtendWith</span><span class="op">;</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">mockito</span><span class="op">.</span><span class="im">Mock</span><span class="op">;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">mockito</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">MockitoExtension</span><span class="op">;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Optional</span><span class="op">;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">assertj</span><span class="op">.</span><span class="im">core</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.</span><span class="im">assertThat</span><span class="op">;</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">mockito</span><span class="op">.</span><span class="im">ArgumentMatchers</span><span class="op">.</span><span class="im">any</span><span class="op">;</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">mockito</span><span class="op">.</span><span class="im">Mockito</span><span class="op">.*;</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="at">@ExtendWith</span><span class="op">(</span>MockitoExtension<span class="op">.</span><span class="fu">class</span><span class="op">)</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> PronunciationAppBackApplicationTests <span class="op">{</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Mock</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> WordRepository wordRepository<span class="op">;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> Word testWord<span class="op">;</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">@BeforeEach</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">setUp</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>        testWord <span class="op">=</span> <span class="kw">new</span> <span class="fu">Word</span><span class="op">(</span><span class="st">"1"</span><span class="op">,</span> <span class="st">"Example"</span><span class="op">,</span> <span class="st">"A thing characteristic of its kind"</span><span class="op">,</span> </span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ɪɡˈzæmpəl"</span><span class="op">,</span> <span class="st">"This is an example sentence."</span><span class="op">,</span> <span class="kw">true</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">testCreateWord</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span><span class="op">(</span>wordRepository<span class="op">.</span><span class="fu">save</span><span class="op">(</span><span class="fu">any</span><span class="op">(</span>Word<span class="op">.</span><span class="fu">class</span><span class="op">))).</span><span class="fu">thenReturn</span><span class="op">(</span>testWord<span class="op">);</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>        Word savedWord <span class="op">=</span> wordRepository<span class="op">.</span><span class="fu">save</span><span class="op">(</span>testWord<span class="op">);</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertThat</span><span class="op">(</span>savedWord<span class="op">).</span><span class="fu">isNotNull</span><span class="op">();</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertThat</span><span class="op">(</span>savedWord<span class="op">.</span><span class="fu">getId</span><span class="op">()).</span><span class="fu">isEqualTo</span><span class="op">(</span><span class="st">"1"</span><span class="op">);</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">verify</span><span class="op">(</span>wordRepository<span class="op">,</span> <span class="fu">times</span><span class="op">(</span><span class="dv">1</span><span class="op">)).</span><span class="fu">save</span><span class="op">(</span><span class="fu">any</span><span class="op">(</span>Word<span class="op">.</span><span class="fu">class</span><span class="op">));</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

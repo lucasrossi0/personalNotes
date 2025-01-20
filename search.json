@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "newfile.html",
-    "href": "newfile.html",
-    "title": "First file",
-    "section": "",
-    "text": "First content\nThis is the first content of the first file."
-  },
-  {
     "objectID": "template.html",
     "href": "template.html",
     "title": "Title",
@@ -23,16 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "This is my documentation.",
+    "title": "Home",
     "section": "",
-    "text": "This is where my journey on writting my knowledge starts."
-  },
-  {
-    "objectID": "secondfile.html",
-    "href": "secondfile.html",
-    "title": "Second file",
-    "section": "",
-    "text": "Second file\nSecond file content."
+    "text": "My documentation\n\nJunior Java developer. Slowly but steady learning more about Spring framework. In a future being a fullstack with react."
   },
   {
     "objectID": "java-concepts/java-concepts-stream.html",
@@ -40,5 +19,33 @@
     "title": "Java Concepts - Stream",
     "section": "",
     "text": "Basics of stream\n\nStream is an interface, which can process elements inside a data structure in a way more functional.   But more functional? How? - Being able to read and understand better; - Writes less lines of code; - Combine mutiple operations in a single chain.   Speaking on a more technichal manner, we can use operations like filter(), map(), collect(), to obtain the same result as a for each loop with conditionals inside it. Example: \n// Not using stream. Using while loop.\npublic int totalWeight() {\n    int summa = 0;\n    int indeksi = 0;\n    while (indeksi &lt; this.Items.size()) {\n        summa += this.Items.get(indeksi).getWeight();\n        indeksi++;\n    }\n    return summa;\n}\n    \n// Using stream -&gt; mapToInt is to return the a stream of int with \n// all the weight of the obj inside the Items, and return the sum() of all.\npublic int totalWeight(){\n    return Items.stream().mapToInt(obj -&gt; obj.getWeight()).sum();\n}"
+  },
+  {
+    "objectID": "programming-concepts/dependecy-injection.html",
+    "href": "programming-concepts/dependecy-injection.html",
+    "title": "Dependency Injection",
+    "section": "",
+    "text": "What is Dependecy Injection?\n\nIn simple words is injecting a object or an element into another class to being able to use its functions and atributes or dependencies.   In java is being able to utilize anothers class or interface methods and atributes in another class where you want to utilize it, instead of creating and instanciating a new object, its easier to just inject it. There are three types of dependecy injection Conctructor injection, Setter injection and Method injection. Here its and example in Spring:\n// Constructor injection:\n@Service\npublic class BookService {\n    // Or just the atribute with @Autowired, spring takes care to manage its lifecycle\n    @Autowired\n    private final BookRepository bookRepository;\n    \n    @Autowired\n    public BookService(BookRepository bookRepository) {\n        this.bookRepository = bookRepository;\n    }\n}\n\n// Setter injection\n@Service\npublic class UserService {\n    private UserRepository userRepository;\n    \n    @Autowired\n    public void setUserRepository(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n}\n\n// Method injection\n@Service\npublic class OrderService {\n    private OrderRepository orderRepository;\n    private PaymentService paymentService;\n    \n    @Autowired\n    public void init(OrderRepository orderRepository, PaymentService paymentService) {\n        this.orderRepository = orderRepository;\n        this.paymentService = paymentService;\n    }\n}\nWords from Albert Profe:\nThis is often done using frameworks like Spring Boot, where dependencies are defined as beans and injected into other beans using annotations."
+  },
+  {
+    "objectID": "java-concepts/java-concepts-test.html",
+    "href": "java-concepts/java-concepts-test.html",
+    "title": "Java Concepts - Test",
+    "section": "",
+    "text": "Why we need to test?\nIn software development testing is important for a lot of reasons, a few of them being:   Verifying the functionality of the application, or a specific method or function; Detecting bugs or errors, its better and cheaper to find them in development rather than production; Improve code quality, ensuring that the output of the application is what its expected to be.\n\n\nHow we test?\nThere are plenty of tools to test, in Java we will talk about (JUnit)[https://junit.org/junit5/] and (Mockito)[https://site.mockito.org/].  Here is a code snippet of JUnit and Mockito:\npackage dev.pronunciationAppBack;\n\nimport dev.pronunciationAppBack.model.Word;\nimport dev.pronunciationAppBack.repository.WordRepository;\nimport org.junit.jupiter.api.Test;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;\nimport org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;\n\nimport static org.assertj.core.api.Assertions.assertThat;\n\n@DataJpaTest\npublic class PronunciationAppBackApplicationTests {\n\n    @Autowired\n    private TestEntityManager entityManager;\n\n    @Autowired\n    private WordRepository wordRepository;\n\n    @Test\n    public void testCreateWord() {\n        Word word = new Word(\"1\", \"Example\", \"A thing characteristic of its kind\", \"ɪɡˈzæmpəl\", \"This is an example sentence.\", true, 1);\n        // assign the word object to the repository and save to H2\n        Word savedWord = wordRepository.save(word);\n        assertThat(savedWord).isNotNull();\n        assertThat(savedWord.getId()).isEqualTo(\"1\");\n    }\n}\n\n// Mockito:\n\npackage dev.pronunciationAppBack;\n\nimport dev.pronunciationAppBack.model.Word;\nimport dev.pronunciationAppBack.repository.WordRepository;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport org.junit.jupiter.api.extension.ExtendWith;\nimport org.mockito.Mock;\nimport org.mockito.junit.jupiter.MockitoExtension;\nimport java.util.Optional;\n\nimport static org.assertj.core.api.Assertions.assertThat;\nimport static org.mockito.ArgumentMatchers.any;\nimport static org.mockito.Mockito.*;\n\n@ExtendWith(MockitoExtension.class)\npublic class PronunciationAppBackApplicationTests {\n\n    @Mock\n    private WordRepository wordRepository;\n\n    private Word testWord;\n\n    @BeforeEach\n    void setUp() {\n        testWord = new Word(\"1\", \"Example\", \"A thing characteristic of its kind\", \n            \"ɪɡˈzæmpəl\", \"This is an example sentence.\", true, 1);\n    }\n\n    @Test\n    public void testCreateWord() {\n        when(wordRepository.save(any(Word.class))).thenReturn(testWord);\n\n        Word savedWord = wordRepository.save(testWord);\n\n        assertThat(savedWord).isNotNull();\n        assertThat(savedWord.getId()).isEqualTo(\"1\");\n        verify(wordRepository, times(1)).save(any(Word.class));\n    }\n}"
+  },
+  {
+    "objectID": "java-concepts/java-concepts-optional.html",
+    "href": "java-concepts/java-concepts-optional.html",
+    "title": "Java Concepts - Optional",
+    "section": "",
+    "text": "What is optional?\n\nOptional is a Java Class, created to handle a value that can or cannot be present. In other words, if the value is assigned to something or is empty or null.  For example, if an object being returned is empty, the application will stop with an NullPointerException. When implemented, the Option class will prevent that error and return an explicty call to empty.   Heres a code snippet:\n    @GetMapping(\"/{id}\")\n    public ResponseEntity&lt;Word&gt; getWordById(@PathVariable String id){\n        // Creating the word object using optional to avoid the NullPointerException\n        Optional&lt;Word&gt; word = wordService.getWordById(id);\n        // Mapping the potential return case if the word is found or not\n        return word.map(value -&gt; new ResponseEntity&lt;&gt;(value, HttpStatus.OK))\n        .orElseGet(() -&gt; new ResponseEntity&gt;(HttpStatus.NOT_FOUND));\n    }"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   }
 ]
