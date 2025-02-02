@@ -1,6 +1,6 @@
 ---
 title: "Title"
-date: "`r Sys.Date()`"
+date: 2025-2-2
 format:
     html:
         toc: true

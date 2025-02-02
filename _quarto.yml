@@ -19,6 +19,12 @@ website:
         menu:
           - text: Dependency Injection
             href: ./programming-concepts/dependecy-injection.qmd
+      - text: Spring-Boot
+        menu:
+          - text: Service Layer
+            href: ./spring-boot/service-layer.qmd
+          - text: Controller Layer
+            href: ./spring-boot/controller-layer.qmd
 format:
   html:
     theme: superhero

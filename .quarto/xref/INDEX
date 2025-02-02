@@ -28,5 +28,11 @@
   },
   "programming-concepts/dependecy-injection.qmd": {
     "dependecy-injection.html": "43f6145d"
+  },
+  "spring-boot/service-layer.qmd": {
+    "service-layer.html": "e22b56e4"
+  },
+  "spring-boot/controller-layer.qmd": {
+    "controller-layer.html": "f8f44773"
   }
 }
